@@ -19,6 +19,7 @@ Takes encrypted ciphertext and key as an argument, and returns encoded text. <br
 
 `def decryptWithoutKey(self, text)` <br />
 Takes encrypted ciphertext and tries to hack it, returns 5 possible keys for the specified ciphertext.
+The algorithm for hacking the cipher works best with middle to long texts(from 30 words) and the key for the cipher should be less than 20
 
 ## Contributing
 
