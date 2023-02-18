@@ -15,17 +15,27 @@ class CipherEngine:
         key = key.lower()
         if not all(k in string.ascii_lowercase for k in key):
             raise ValueError("Invalid key {!r}; the key should not contain spaces in between and should only consist of English letters".format(key))
-        key_iter = itertools.cycle(map(ord, key))
-        return "".join(
-            chr(ord('a') + ((next(key_iter) - ord('a') + ord(letter) - ord('a'))) % 26)
-            if letter in string.ascii_lowercase
-            else letter
-            for letter in textToEncryipt.lower())
+        keyIndex = 0
+        result = []
+        for letter in textToEncryipt.lower():
+            if letter in string.ascii_lowercase:
+                keyOffset = ord(key[keyIndex]) - ord('a')
+                letterOffset = ord(letter) - ord('a')
+                encryptedOffset = (keyOffset + letterOffset) % 26
+                encryptedLetter = chr(ord('a') + encryptedOffset)
+                result.append(encryptedLetter)
+                keyIndex = (keyIndex + 1) % len(key)
+            else:
+                result.append(letter)
+        return ''.join(result)
 
     def decrypt(self, ciphertext, key):
-        [ord(k) - ord('a') for k in key.lower()]
-        inverse = "".join(chr(ord('a') + ((26) - (ord(k) - ord('a'))) % 26) for k in key)
-        return self.encrypt(ciphertext, inverse)
+        key = key.lower()
+        if not all(k in string.ascii_lowercase for k in key):
+            raise ValueError("Invalid key {!r}; the key should not contain spaces in between and should only consist of English letters".format(key))
+        inverseKey = "".join(chr(ord('a') + ((26) - (ord(k) - ord('a'))) % 26) for k in key)
+        print(f"asd inverse key {inverseKey}")
+        return self.encrypt(ciphertext, inverseKey)
 
     def decryptWithoutKey(self, text):
         best_keys = []
@@ -33,7 +43,6 @@ class CipherEngine:
         text_letters = [c for c in text.lower() if c in string.ascii_lowercase]
 
         for keyLength in range(self.minKeySize, self.maxKeySize):
-            # Try all possible key lengths
             key = [None] * keyLength
             for keyIndex in range(keyLength):
                 letters = "".join(itertools.islice(text_letters, keyIndex, None, keyLength))
