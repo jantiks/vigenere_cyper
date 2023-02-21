@@ -49,7 +49,6 @@ class CipherEngine:
                 while i < len(text_letters):
                     letters += text_letters[i]
                     i += keyLength
-                print(f"asd {i} letters {letters}")
                 shifts = []
                 if not letters:
                     print("Short text, can't decode")
