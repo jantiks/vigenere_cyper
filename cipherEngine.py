@@ -34,7 +34,6 @@ class CipherEngine:
         if not all(k in string.ascii_lowercase for k in key):
             raise ValueError("Invalid key {!r}; the key should not contain spaces in between and should only consist of English letters".format(key))
         inverseKey = "".join(chr(ord('a') + ((26) - (ord(k) - ord('a'))) % 26) for k in key)
-        print(f"asd inverse key {inverseKey}")
         return self.encrypt(ciphertext, inverseKey)
 
     def decryptWithoutKey(self, text):
@@ -45,20 +44,28 @@ class CipherEngine:
         for keyLength in range(self.minKeySize, self.maxKeySize):
             key = [None] * keyLength
             for keyIndex in range(keyLength):
-                letters = "".join(itertools.islice(text_letters, keyIndex, None, keyLength))
+                letters = ""
+                i = keyIndex
+                while i < len(text_letters):
+                    letters += text_letters[i]
+                    i += keyLength
+                print(f"asd {i} letters {letters}")
                 shifts = []
                 if not letters:
                     print("Short text, can't decode")
                     return ""
-                    
+
                 for key_char in string.ascii_lowercase:
                     shifts.append(
                         (self.__compareFrequencies(self.decrypt(letters, key_char)), key_char)
                     )
+                
                 key[keyIndex] = min(shifts, key=lambda x: x[0])[1]
             best_keys.append("".join(key))
+
         best_keys.sort(key=lambda key: self.__compareFrequencies(self.decrypt(text, key)))
         return best_keys[:5]
+
 
     #MARK: Private
     def __compareFrequencies(self, text):
@@ -69,4 +76,4 @@ class CipherEngine:
         total = float(len(text))
         for l in text:
             freq[ord(l) - ord('a')] += 1
-        return sum(abs(f / total - E) for f, E in zip(freq, self.__englishLetterFreq))
+        return sum(abs(f / total - el) for f, el in zip(freq, self.__englishLetterFreq))
