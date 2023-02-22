@@ -1,0 +1,31 @@
+Here are some test cases for the program:
+--------------------------------------------------------
+--------------------------------------------------------
+1. encryption
+plaintext: Attack at dawn
+key: lemon
+expected ciphertext: lxfopv ef rnhr
+
+plaintext: the quick brown fox jumps over the lazy dog
+key: key
+expected ciphertext: dlc aygmo zbsux jmh nswtq yzcb xfo pyjc byk
+
+--------------------------------------------------------
+2. decryption
+ciphertext: lxfopv ef rnhr
+key: lemon
+expected plaintext: attack at dawn
+
+ciphertext: dlc aygmo zbsux jmh nswtq yzcb xfo pyjc byk
+key: KEY
+expected plaintext: the quick brown fox jumps over the lazy dog
+--------------------------------------------------------
+3. decryption without a key
+
+ciphertext: dlq knwoqr nwszu gsi evbcixwap, jqsytrs hup wmbq mifkrpr tse esqg nyh fvr nsaz jlxqf yltbwar ef vrc jqsg. elq gnwxk ovc juzyph tse wyzuf lw esnryxzf nmdqyph ajrclqoq. dlq qyzwqr upv qmrd ezr ypx fvr dsgbq zj fvr hehsf heev nhek vrc aafetie.
+key: lemon
+expected plaintext: She walked along the shoreline, feeling the sand between her toes and the cool water lapping at her feet. The salty air filled her lungs as seagulls circled overhead. She closed her eyes and let the sound of the waves wash away her worries.
+
+ciphertext: lav ghthel uwgk d otia bxpnyw czfz govf gnt hgjenfq, aecizocalaju kkw mioawjid kao rqv irwazxny lds jnq pzhu njek gb dzqc ter cagpdw. osrjmecg srtw gnafyhsw, kvrog csdhg vfzhzbt oc tzw xfvhrx. r zbtt fakdsipsg tofz wik debv lfmf huk lalwn, drwaxehye laalebx igk r qnzrh. sk jwxkl yvzy, zwe klwfj hexiurj dnw tu ceh, lpzbxrxny aj hyh vtiyakhs dags ulsffbqy xn lza gbb. 
+key: strongpassword
+expected plaintext: The sunset cast a warm orange glow over the horizon, illuminating the tranquil sea and painting the sky with hues of pink and purple. Seagulls flew overhead, their calls echoing in the breeze. A lone fisherman cast his line into the water, patiently waiting for a catch. As night fell, the stars emerged one by one, twinkling in the darkness like diamonds in the sky. 
