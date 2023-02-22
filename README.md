@@ -13,12 +13,22 @@ Disclaimer!!! the algorithm for hacking the cipher works best with middle to lon
 The main functionality of the program is written in `CipherEngine` class, which has 3 public methods:<br />
 `def encrypt(self, textToEncryipt, key)`<br />
 Takes a plain text and a key as arguments and returns the decoded text<br />
+```
+engine = CipherEngine()
+decryptedText = engine.decrypt("encrypted message", "key")
+```
 
 `def decrypt(self, ciphertext, key)`<br />
 Takes encrypted ciphertext and key as an argument, and returns encoded text. <br />
 
+```
+engine = CipherEngine()
+encryptedText = engine.encrypt("secret message", "key")
+```
+
 `def decryptWithoutKey(self, text)` <br />
 Takes encrypted ciphertext and tries to hack it, returns 5 possible keys for the specified ciphertext.
+This function usis frequency analysis for finding the possible keys.
 The algorithm for hacking the cipher works best with middle to long texts(from 30 words) and the key for the cipher should be less than 20
 
 ## Contributing
