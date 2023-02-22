@@ -1,6 +1,6 @@
 # Vigenre Cipher
 
-Vigenre Cypher is a Python implementation for famous Vigenre Cypher https://en.wikipedia.org/wiki/Vigenère_cipher
+This is a simple Python implementation for famous Vigenre Cypher https://en.wikipedia.org/wiki/Vigenère_cipher
 
 ## Usage
 Disclaimer!!! the algorithm for hacking the cipher works best with middle to long texts(from 30 words) and the key for the cipher should be less than `20`
