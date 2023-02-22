@@ -1,4 +1,4 @@
-# Vigenre Cypher
+# Vigenre Cipher
 
 Vigenre Cypher is a Python implementation for famous Vigenre Cypher https://en.wikipedia.org/wiki/Vigenère_cipher
 
@@ -36,9 +36,10 @@ Takes encrypted ciphertext and tries to hack it, returns 5 possible keys for the
 engine = CipherEngine()
 possible_keys = engine.decryptWithoutKey("encrypted message")
 ```
-This function usis frequency analysis for finding the possible keys, which is done by private function `def __compareFrequencies(self, text):`.
+`def decryptWithoutKey(self, text)` function uses frequency analysis for finding the possible keys, which is done by private function `def __compareFrequencies(self, text):`.
 
-The algorithm for hacking the cipher works best with middle to long texts(from 30 words) and the key for the cipher should be less than 20
+The algorithm for hacking the cipher works best with middle to long texts(from 30 words) and the key for the cipher should be less than 20. <br />
+It's worth noting that this technique is not foolproof, and may not work well for very short ciphertexts or ciphertexts that have been encrypted with a very random or complex key. However, it can be a useful tool for quickly breaking simple substitution ciphers like the Vigenere cipher.
 
 ### Note
 * `encrypt` and `decrypt` methods accept two parameters: the text to be encrypted/decrypted, and the key.
