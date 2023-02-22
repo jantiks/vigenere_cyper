@@ -2,13 +2,22 @@ from cipherEngine import CipherEngine
 import textwrap
 
 def initalMenu() :
-    return int(input("""
-    This is the Vigenere cipher, pick one of the menu items
-    1. encryption of text
-    2. decryption with a key
-    3. decryption without key
-    4. quit
-    """))
+    while True:
+        try:
+            choice = int(input("""
+                This is the Vigenere cipher, pick one of the menu items
+                1. encryption of text
+                2. decryption with a key
+                3. decryption without key
+                4. quit
+                """))
+            if choice in range(1, 5):
+                break
+            else:
+                print("Invalid input. Please enter a valid integer between 1 and 4.")
+        except ValueError:
+            print("Invalid input. Please enter a valid integer between 1 and 4.")
+    return choice
 
 def getTheKey():
     return str(input("please specify the key: "))
@@ -54,8 +63,5 @@ if __name__ == "__main__":
                         break
                 if foundKey:
                     break
-        elif selectedMenu == 4:
-            break
-                    
         else:
-            print("please select a number between 1 to 3")
+            break
